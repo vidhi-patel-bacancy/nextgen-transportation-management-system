@@ -10,6 +10,7 @@ export const APP_ROUTE_PERMISSIONS: { prefix: string; roles: UserRole[] }[] = [
   { prefix: "/rates", roles: ["admin", "manager", "carrier", "customer"] },
   { prefix: "/invoices", roles: ["admin", "manager", "carrier", "customer"] },
   { prefix: "/routes", roles: ["admin", "manager", "carrier"] },
+  { prefix: "/profile", roles: ["admin", "manager", "carrier", "customer"] },
 ];
 
 export const CARRIER_MANAGERS: UserRole[] = ["admin", "manager"];

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { BarChart3, Building2, LayoutDashboard, Map, Package, ReceiptText, Route, Truck } from "lucide-react";
+import { BarChart3, Building2, LayoutDashboard, Map, Package, ReceiptText, Route, Truck, UserCircle2 } from "lucide-react";
 
 import { useAuth } from "@/hooks/useAuth";
 import { hasRole } from "@/lib/auth/permissions";
@@ -20,6 +20,7 @@ const links: { href: string; label: string; icon: typeof LayoutDashboard; roles:
   { href: "/rates", label: "Rates", icon: ReceiptText, roles: ["admin", "manager", "carrier", "customer"] },
   { href: "/invoices", label: "Invoices", icon: ReceiptText, roles: ["admin", "manager", "carrier", "customer"] },
   { href: "/routes", label: "Routes", icon: Map, roles: ["admin", "manager", "carrier"] },
+  { href: "/profile", label: "Profile", icon: UserCircle2, roles: ["admin", "manager", "carrier", "customer"] },
 ];
 
 export function Sidebar() {

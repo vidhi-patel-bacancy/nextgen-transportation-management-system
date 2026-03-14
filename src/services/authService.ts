@@ -3,6 +3,7 @@ import type { UserRole } from "@/types";
 import type { Database } from "@/types/supabase";
 
 type OrganizationRow = Database["public"]["Tables"]["organizations"]["Row"];
+type UserRow = Database["public"]["Tables"]["users"]["Row"];
 
 type AuthApiResponse = {
   success?: boolean;
@@ -144,4 +145,79 @@ export async function logout() {
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
+}
+
+export async function getCurrentUserProfile() {
+  const supabase = createClient();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    throw new Error("Authentication required.");
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from("users")
+    .select("id, email, role, organization_id, full_name, phone")
+    .eq("id", user.id)
+    .single();
+
+  if (profileError || !profile) {
+    throw new Error("Unable to load profile.");
+  }
+
+  return profile as Pick<UserRow, "id" | "email" | "role" | "organization_id" | "full_name" | "phone">;
+}
+
+export async function updateCurrentUserProfile(payload: { fullName: string; phone: string }) {
+  const supabase = createClient();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    throw new Error("Authentication required.");
+  }
+
+  const updates = {
+    full_name: payload.fullName.trim() || null,
+    phone: payload.phone.trim() || null,
+  };
+
+  const { error: updateError } = await supabase.from("users").update(updates).eq("id", user.id);
+  if (updateError) {
+    throw new Error("Unable to update profile.");
+  }
+}
+
+export async function changeCurrentUserPassword(payload: { currentPassword: string; newPassword: string }) {
+  const supabase = createClient();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user?.email) {
+    throw new Error("Authentication required.");
+  }
+
+  const { error: reAuthError } = await supabase.auth.signInWithPassword({
+    email: user.email,
+    password: payload.currentPassword,
+  });
+
+  if (reAuthError) {
+    throw new Error("Current password is incorrect.");
+  }
+
+  const { error: passwordError } = await supabase.auth.updateUser({
+    password: payload.newPassword,
+  });
+
+  if (passwordError) {
+    throw new Error("Unable to change password.");
+  }
 }

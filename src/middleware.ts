@@ -5,7 +5,7 @@ import { createServerClient } from "@supabase/ssr";
 import { canAccessAppPath } from "@/lib/auth/permissions";
 import type { Database } from "@/types/supabase";
 
-const protectedPrefixes = ["/dashboard", "/orders", "/shipments", "/carriers", "/tracking", "/reports", "/rates", "/invoices", "/routes"];
+const protectedPrefixes = ["/dashboard", "/orders", "/shipments", "/carriers", "/tracking", "/reports", "/rates", "/invoices", "/routes", "/profile"];
 const authPages = ["/login", "/signup"];
 
 export async function middleware(request: NextRequest) {
@@ -88,6 +88,7 @@ export const config = {
     "/rates/:path*",
     "/invoices/:path*",
     "/routes/:path*",
+    "/profile/:path*",
     "/login",
     "/signup",
   ],
