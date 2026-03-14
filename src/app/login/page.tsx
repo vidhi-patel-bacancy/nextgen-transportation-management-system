@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,6 +21,14 @@ const schema = z.object({
 type LoginValues = z.infer<typeof schema>;
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoginPageFallback />}>
+      <LoginPageContent />
+    </Suspense>
+  );
+}
+
+function LoginPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
@@ -96,6 +104,17 @@ export default function LoginPage() {
             Forgot password?
           </Link>
         </div>
+      </Card>
+    </main>
+  );
+}
+
+function LoginPageFallback() {
+  return (
+    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
+      <Card className="w-full animate-rise">
+        <h1 className="text-2xl font-bold text-slate-900">Login to Cloud TMS</h1>
+        <p className="mb-5 text-sm text-slate-600">Loading login form...</p>
       </Card>
     </main>
   );

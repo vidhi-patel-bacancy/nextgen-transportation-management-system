@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,6 +21,14 @@ const schema = z.object({
 type VerifyValues = z.infer<typeof schema>;
 
 export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={<VerifyEmailPageFallback />}>
+      <VerifyEmailPageContent />
+    </Suspense>
+  );
+}
+
+function VerifyEmailPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
@@ -113,6 +121,17 @@ export default function VerifyEmailPage() {
             Back to login
           </Link>
         </div>
+      </Card>
+    </main>
+  );
+}
+
+function VerifyEmailPageFallback() {
+  return (
+    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
+      <Card className="w-full animate-rise">
+        <h1 className="text-2xl font-bold text-slate-900">Verify your email</h1>
+        <p className="mb-5 text-sm text-slate-600">Loading verification details...</p>
       </Card>
     </main>
   );

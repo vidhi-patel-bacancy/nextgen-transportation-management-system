@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,6 +26,14 @@ const schema = z
 type ResetValues = z.infer<typeof schema>;
 
 export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={<ResetPasswordPageFallback />}>
+      <ResetPasswordPageContent />
+    </Suspense>
+  );
+}
+
+function ResetPasswordPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
@@ -93,6 +101,17 @@ export default function ResetPasswordPage() {
             Request new reset link
           </Link>
         </p>
+      </Card>
+    </main>
+  );
+}
+
+function ResetPasswordPageFallback() {
+  return (
+    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
+      <Card className="w-full animate-rise">
+        <h1 className="text-2xl font-bold text-slate-900">Reset password</h1>
+        <p className="mb-5 text-sm text-slate-600">Loading reset details...</p>
       </Card>
     </main>
   );
