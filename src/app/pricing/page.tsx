@@ -8,20 +8,20 @@ const tiers = [
   {
     name: "Starter",
     price: "$299/mo",
-    description: "Best for small operations teams getting started with a cloud TMS.",
-    points: ["Up to 1,500 shipments/month", "Orders, shipments, tracking, documents", "Email support"],
+    description: "For teams starting digital transport operations.",
+    points: ["Up to 1,500 shipments/month", "Orders, shipments, tracking, documents", "Basic reports and email support"],
   },
   {
     name: "Growth",
     price: "$899/mo",
-    description: "For growing shippers and 3PLs with advanced routing and audit workflows.",
-    points: ["Up to 10,000 shipments/month", "Rates, invoices, freight audits, routes", "Priority support + onboarding"],
+    description: "For growing shippers and 3PLs with audit and routing needs.",
+    points: ["Up to 10,000 shipments/month", "Rates, route plans, freight audits, invoices", "Priority support and onboarding"],
   },
   {
     name: "Enterprise",
     price: "Custom",
-    description: "For multi-site, high-scale networks with custom integration and SLA requirements.",
-    points: ["Unlimited shipment scale", "Custom integrations and SSO", "Dedicated success manager"],
+    description: "For multi-site logistics networks with strict SLA requirements.",
+    points: ["High-volume or unlimited shipment scale", "Custom integrations, SSO, and security controls", "Dedicated success manager"],
   },
 ];
 
@@ -61,6 +61,23 @@ export default function PricingPage() {
               </Link>
             </Card>
           ))}
+        </section>
+
+        <section className="mt-8">
+          <Card className="border-white/80 bg-white/72">
+            <h2 className="text-lg font-semibold tracking-tight text-slate-900">Included in All Plans</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Multi-tenant security, role-based access, API-ready architecture, and customer portal access are included in all plans.
+            </p>
+            <p className="mt-4 text-sm text-slate-600">
+              Need transaction-based pricing, annual billing, or implementation services? Contact us for a custom quote.
+            </p>
+            <div className="mt-4">
+              <Link className="text-sm font-semibold text-emerald-700" href="/contact">
+                Contact Sales
+              </Link>
+            </div>
+          </Card>
         </section>
       </div>
     </main>

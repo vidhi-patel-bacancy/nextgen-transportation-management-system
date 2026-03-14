@@ -1,29 +1,25 @@
 import Link from "next/link";
 
-import { ArrowRight, BarChart3, Package, Route, ShieldCheck, Truck, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 
-const highlights = [
+const modules = [
   {
-    title: "Load Planning",
-    description: "Plan and optimize routes, loads, and dispatch execution from one control tower.",
-    icon: Route,
+    title: "Order and Shipment Control",
+    description: "Create orders, assign carriers, and monitor shipment status from pickup to delivery.",
   },
   {
-    title: "Real-time Tracking",
-    description: "Track shipments, event timelines, and exceptions with live operational visibility.",
-    icon: Truck,
+    title: "Rates, Routes, and Invoices",
+    description: "Manage pricing, route plans, freight audits, and payment records in one workflow.",
   },
   {
-    title: "Rates and Audits",
-    description: "Manage rates, freight invoices, and audit confidence workflows with payment tracking.",
-    icon: BarChart3,
+    title: "Role-based Access",
+    description: "Separate experiences for operations teams and customers with tenant-safe data access.",
   },
   {
-    title: "Customer Self-Service",
-    description: "Give customers their own portal to create orders and track delivery progress.",
-    icon: Users,
+    title: "Reports and Visibility",
+    description: "Track operational KPIs, delayed shipments, and carrier performance using live data.",
   },
 ];
 
@@ -56,63 +52,87 @@ export default function HomePage() {
           </nav>
         </header>
 
-        <section className="mb-12 grid gap-8 lg:grid-cols-[1.2fr,1fr] lg:items-center">
+        <section className="mb-10 grid gap-8 lg:grid-cols-[1.2fr,1fr] lg:items-start">
           <div>
-            <p className="mb-3 inline-flex rounded-full border border-emerald-900/20 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Transportation Management System
-            </p>
-            <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 md:text-5xl">
-              Run logistics with one platform for ops teams and customers.
-            </h1>
+            <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 md:text-5xl">Simple and informative TMS for daily logistics operations.</h1>
             <p className="mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-              NextGen TMS combines order execution, shipment tracking, rate management, invoice audits, and customer self-service in a
-              single cloud workspace.
+              NextGen TMS helps shippers and logistics teams manage orders, shipments, carriers, rates, routes, and freight invoices
+              without a complicated setup.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/signup"
                 className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-700 to-teal-700 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_22px_rgba(6,95,70,0.25)]"
               >
-                Create Workspace
+                Start Free Trial
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/dashboard"
+                href="/login"
                 className="inline-flex items-center rounded-lg border border-emerald-950/20 bg-white/80 px-4 py-2.5 text-sm font-semibold text-slate-900"
               >
-                Open Admin Panel
+                Login
               </Link>
             </div>
           </div>
 
           <Card className="border-white/80 bg-white/70 p-6">
-            <h2 className="text-lg font-semibold tracking-tight text-slate-900">Built For Three Surfaces</h2>
+            <h2 className="text-lg font-semibold tracking-tight text-slate-900">What You Get</h2>
             <ul className="mt-4 space-y-3 text-sm text-slate-700">
-              <li className="flex items-start gap-2">
-                <ShieldCheck className="mt-0.5 h-4 w-4 text-emerald-700" />
-                Public website for acquisition, pricing, and demos.
-              </li>
-              <li className="flex items-start gap-2">
-                <Package className="mt-0.5 h-4 w-4 text-emerald-700" />
-                Customer portal for order creation, tracking, invoices, and documents.
-              </li>
-              <li className="flex items-start gap-2">
-                <BarChart3 className="mt-0.5 h-4 w-4 text-emerald-700" />
-                Operations/admin panel for rates, carriers, routing, audit, and reporting.
-              </li>
+              <li>1. Operations panel for dispatch, planning, and audit workflows.</li>
+              <li>2. Customer portal for order requests, tracking, and invoice visibility.</li>
+              <li>3. API-ready architecture for integration with ERP/WMS and partners.</li>
+              <li>4. Multi-tenant role-based access control with secure data isolation.</li>
             </ul>
           </Card>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {highlights.map((item) => (
-            <Card key={item.title} className="border-white/80 bg-white/70">
-              <item.icon className="h-5 w-5 text-emerald-700" />
-              <h3 className="mt-3 text-base font-semibold tracking-tight text-slate-900">{item.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{item.description}</p>
-            </Card>
-          ))}
+        <section className="mb-10">
+          <h2 className="mb-4 text-2xl font-bold tracking-tight text-slate-950">Core Modules</h2>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {modules.map((item) => (
+              <Card key={item.title} className="border-white/80 bg-white/70">
+                <h3 className="text-base font-semibold tracking-tight text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-sm text-slate-600">{item.description}</p>
+              </Card>
+            ))}
+          </div>
         </section>
+
+        <section className="grid gap-4 md:grid-cols-3">
+          <Card className="border-white/80 bg-white/70">
+            <h3 className="text-base font-semibold tracking-tight text-slate-900">For Shippers</h3>
+            <p className="mt-2 text-sm text-slate-600">Manage freight execution, cost control, and on-time delivery from one dashboard.</p>
+          </Card>
+          <Card className="border-white/80 bg-white/70">
+            <h3 className="text-base font-semibold tracking-tight text-slate-900">For 3PL Teams</h3>
+            <p className="mt-2 text-sm text-slate-600">Coordinate customer orders, carrier assignments, and operational exceptions at scale.</p>
+          </Card>
+          <Card className="border-white/80 bg-white/70">
+            <h3 className="text-base font-semibold tracking-tight text-slate-900">For Customers</h3>
+            <p className="mt-2 text-sm text-slate-600">Create shipment requests and track progress in a dedicated self-service portal.</p>
+          </Card>
+        </section>
+
+        <section className="mt-10 rounded-2xl border border-white/70 bg-white/65 p-6">
+          <h2 className="text-xl font-bold tracking-tight text-slate-950">Get Started in 3 Steps</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            1) Create your workspace. 2) Configure carriers and rates. 3) Start processing live orders and shipments.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link
+              href="/signup"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-700 to-teal-700 px-4 py-2 text-sm font-semibold text-white"
+            >
+              Create Workspace
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/contact" className="inline-flex rounded-lg border border-emerald-900/20 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-900">
+              Talk to Sales
+            </Link>
+          </div>
+        </section>
+
       </div>
     </main>
   );

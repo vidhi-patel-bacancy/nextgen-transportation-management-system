@@ -17,24 +17,35 @@ export default function ContactPage() {
         </div>
 
         <Card className="border-white/80 bg-white/72">
-          <p className="text-base text-slate-700">
-            For demos, implementation, partnerships, or enterprise pricing, contact our team:
-          </p>
+          <h2 className="text-lg font-semibold tracking-tight text-slate-900">How We Can Help</h2>
+          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
+            <li>Product demo and feature walkthrough</li>
+            <li>Implementation planning and migration guidance</li>
+            <li>Integration discussion (ERP, WMS, carrier data)</li>
+            <li>Enterprise security and pricing review</li>
+          </ul>
           <div className="mt-5 space-y-2 text-sm text-slate-700">
             <p>
-              Email: <a className="font-semibold text-emerald-700" href="mailto:sales@nextgentms.com">sales@nextgentms.com</a>
+              Sales:{" "}
+              <a className="font-semibold text-emerald-700" href="mailto:sales@nextgentms.com">
+                sales@nextgentms.com
+              </a>
             </p>
             <p>
-              Support: <a className="font-semibold text-emerald-700" href="mailto:support@nextgentms.com">support@nextgentms.com</a>
+              Support:{" "}
+              <a className="font-semibold text-emerald-700" href="mailto:support@nextgentms.com">
+                support@nextgentms.com
+              </a>
             </p>
-            <p>Hours: Monday to Friday, 9:00 AM - 6:00 PM (local time)</p>
+            <p>Support hours: Monday to Friday, 9:00 AM - 6:00 PM (local time)</p>
+            <p>Response target: within 1 business day</p>
           </div>
           <div className="mt-6">
             <Link
               href="/signup"
               className="inline-flex rounded-lg bg-gradient-to-r from-emerald-700 to-teal-700 px-4 py-2 text-sm font-semibold text-white"
             >
-              Create a Trial Workspace
+              Create Trial Workspace
             </Link>
           </div>
         </Card>
