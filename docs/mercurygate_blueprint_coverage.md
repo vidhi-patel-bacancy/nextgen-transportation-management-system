@@ -1,5 +1,7 @@
 # MercuryGate Blueprint Coverage Matrix
 
+> Note: For the latest consolidated matrix that includes core features, advanced features, innovative ideas, data entities, API groups, monetization, KPI, and GTM coverage, see `docs/nextgen_full_blueprint_coverage.md`.
+
 Source document: `/home/bacancy/Downloads/mercurygate_blueprint_20260311_003049.pdf` (generated March 11, 2026).
 
 Status legend:

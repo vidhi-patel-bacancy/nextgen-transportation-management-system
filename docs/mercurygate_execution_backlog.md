@@ -1,5 +1,7 @@
 # MercuryGate Blueprint Execution Backlog
 
+> Note: For the latest phase-by-phase plan that tracks every point from the blueprint, see `docs/mvp-roadmap.md`.
+
 Objective: close every `Partial` and `Missing` item from `docs/mercurygate_blueprint_coverage.md` so no blueprint point is left untracked.
 
 Status update (March 14, 2026):

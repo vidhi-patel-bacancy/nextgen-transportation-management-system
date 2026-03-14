@@ -105,3 +105,5 @@ npm run seed:demo
 - Coverage matrix: `docs/mercurygate_blueprint_coverage.md`
 - Execution backlog: `docs/mercurygate_execution_backlog.md`
 - User role guide: `docs/user-role-step-by-step-guide.md`
+- Full blueprint coverage (all points): `docs/nextgen_full_blueprint_coverage.md`
+- MVP roadmap: `docs/mvp-roadmap.md`
