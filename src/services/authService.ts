@@ -2,7 +2,6 @@ import { createClient } from "@/lib/supabase/client";
 import type { UserRole } from "@/types";
 import type { Database } from "@/types/supabase";
 
-type OrganizationRow = Database["public"]["Tables"]["organizations"]["Row"];
 type UserRow = Database["public"]["Tables"]["users"]["Row"];
 
 type AuthApiResponse = {
@@ -82,26 +81,16 @@ export async function signup({
   });
   if (error) throw error;
 
-  const { data: organization, error: orgError } = await supabase
-    .from("organizations")
-    .insert({ name: organizationName })
-    .select("*")
-    .single();
-  if (orgError) throw orgError;
-  const org = organization as OrganizationRow;
-
   if (!data.user?.id) {
     throw new Error("User account was created without a user id.");
   }
 
-  const { error: profileError } = await supabase.from("users").upsert({
-    id: data.user.id,
+  await callAuthApi("/api/auth/complete-signup", {
+    userId: data.user.id,
     email: normalizedEmail,
     role,
-    organization_id: org.id,
+    organizationName,
   });
-
-  if (profileError) throw profileError;
 
   return data;
 }

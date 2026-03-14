@@ -63,7 +63,13 @@ export default function SignupPage() {
               await logout();
               router.replace(`/verify-email?email=${encodeURIComponent(normalizedEmail)}`);
             } catch (err) {
-              setError(err instanceof Error ? err.message : "Unable to create account.");
+              const message =
+                err instanceof Error
+                  ? err.message
+                  : typeof err === "object" && err !== null && "message" in err
+                    ? String((err as { message?: unknown }).message ?? "")
+                    : "";
+              setError(message || "Unable to create account.");
             } finally {
               setSubmitting(false);
             }
