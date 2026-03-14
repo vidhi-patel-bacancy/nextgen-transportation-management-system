@@ -1,7 +1,8 @@
 import type { UserRole } from "@/types";
 
 export const APP_ROUTE_PERMISSIONS: { prefix: string; roles: UserRole[] }[] = [
-  { prefix: "/dashboard", roles: ["admin", "manager", "carrier", "customer"] },
+  { prefix: "/dashboard", roles: ["admin", "manager", "carrier"] },
+  { prefix: "/portal", roles: ["customer"] },
   { prefix: "/orders", roles: ["admin", "manager", "customer"] },
   { prefix: "/shipments", roles: ["admin", "manager", "carrier"] },
   { prefix: "/carriers", roles: ["admin", "manager"] },
@@ -29,4 +30,12 @@ export function canAccessAppPath(pathname: string, role: UserRole): boolean {
   }
 
   return permission.roles.includes(role);
+}
+
+export function getDefaultAppHome(role: UserRole | null | undefined): string {
+  if (role === "customer") {
+    return "/portal";
+  }
+
+  return "/dashboard";
 }

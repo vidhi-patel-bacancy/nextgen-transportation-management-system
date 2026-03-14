@@ -2,10 +2,10 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { createServerClient } from "@supabase/ssr";
 
-import { canAccessAppPath } from "@/lib/auth/permissions";
+import { canAccessAppPath, getDefaultAppHome } from "@/lib/auth/permissions";
 import type { Database } from "@/types/supabase";
 
-const protectedPrefixes = ["/dashboard", "/orders", "/shipments", "/carriers", "/tracking", "/reports", "/rates", "/invoices", "/routes", "/profile"];
+const protectedPrefixes = ["/dashboard", "/portal", "/orders", "/shipments", "/carriers", "/tracking", "/reports", "/rates", "/invoices", "/routes", "/profile"];
 const authPages = ["/login", "/signup"];
 
 export async function middleware(request: NextRequest) {
@@ -45,19 +45,19 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  let profile: { role: Database["public"]["Tables"]["users"]["Row"]["role"] | null; email_verified_at: string | null } | null = null;
+  if (user && (isProtected || isAuthPage)) {
+    const { data } = await supabase.from("users").select("role, email_verified_at").eq("id", user.id).single();
+    profile = data;
+  }
+
   if (isAuthPage && user) {
     const url = request.nextUrl.clone();
-    url.pathname = "/dashboard";
+    url.pathname = getDefaultAppHome(profile?.role);
     return NextResponse.redirect(url);
   }
 
   if (isProtected && user) {
-    const { data: profile } = await supabase
-      .from("users")
-      .select("role, email_verified_at")
-      .eq("id", user.id)
-      .single();
-
     if (!profile?.email_verified_at) {
       const url = request.nextUrl.clone();
       url.pathname = "/verify-email";
@@ -69,7 +69,7 @@ export async function middleware(request: NextRequest) {
 
     if (!profile?.role || !canAccessAppPath(pathname, profile.role)) {
       const url = request.nextUrl.clone();
-      url.pathname = "/dashboard";
+      url.pathname = getDefaultAppHome(profile?.role);
       return NextResponse.redirect(url);
     }
   }
@@ -80,6 +80,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/dashboard/:path*",
+    "/portal/:path*",
     "/orders/:path*",
     "/shipments/:path*",
     "/carriers/:path*",

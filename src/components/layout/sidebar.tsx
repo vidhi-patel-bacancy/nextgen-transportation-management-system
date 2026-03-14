@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { BarChart3, Building2, LayoutDashboard, Map, Package, ReceiptText, Route, Truck, UserCircle2 } from "lucide-react";
+import { BarChart3, Building2, LayoutDashboard, Map, Package, ReceiptText, Route, Truck, UserCircle2, Users } from "lucide-react";
 
 import { useAuth } from "@/hooks/useAuth";
 import { hasRole } from "@/lib/auth/permissions";
@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils/cn";
 import type { UserRole } from "@/types";
 
 const links: { href: string; label: string; icon: typeof LayoutDashboard; roles: UserRole[] }[] = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, roles: ["admin", "manager", "carrier", "customer"] },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, roles: ["admin", "manager", "carrier"] },
+  { href: "/portal", label: "Customer Portal", icon: Users, roles: ["customer"] },
   { href: "/orders", label: "Orders", icon: Package, roles: ["admin", "manager", "customer"] },
   { href: "/shipments", label: "Shipments", icon: Truck, roles: ["admin", "manager", "carrier"] },
   { href: "/carriers", label: "Carriers", icon: Building2, roles: ["admin", "manager"] },
