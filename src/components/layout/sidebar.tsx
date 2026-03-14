@@ -29,10 +29,11 @@ export function Sidebar() {
   const visibleLinks = links.filter((link) => hasRole(role, link.roles));
 
   return (
-    <aside className="w-full border-b border-slate-200 bg-slate-950 px-3 py-4 text-white lg:min-h-screen lg:w-64 lg:border-b-0 lg:border-r">
-      <div className="mb-4 px-3">
-        <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Cloud TMS</p>
-        <h1 className="mt-1 text-lg font-bold">Transport Control</h1>
+    <aside className="w-full border-b border-emerald-950/10 bg-gradient-to-b from-emerald-950 to-[#0f2922] px-3 py-4 text-white lg:min-h-screen lg:w-72 lg:border-b-0 lg:border-r lg:border-r-emerald-950/20">
+      <div className="mb-5 rounded-xl border border-white/10 bg-white/5 px-3 py-3">
+        <p className="text-xs uppercase tracking-[0.24em] text-emerald-200/90">Cloud TMS</p>
+        <h1 className="mt-1 text-lg font-bold tracking-tight">Transport Control</h1>
+        <p className="mt-1 text-xs text-emerald-100/70">Live operations workspace</p>
       </div>
       <nav className="flex gap-2 overflow-x-auto lg:flex-col">
         {visibleLinks.map(({ href, label, icon: Icon }) => {
@@ -42,8 +43,10 @@ export function Sidebar() {
               key={href}
               href={href}
               className={cn(
-                "inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap transition",
-                isActive ? "bg-cyan-700 text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white",
+                "inline-flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium whitespace-nowrap transition",
+                isActive
+                  ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-[0_8px_20px_rgba(16,185,129,0.28)]"
+                  : "text-emerald-100/85 hover:bg-white/10 hover:text-white",
               )}
             >
               <Icon className="h-4 w-4" />

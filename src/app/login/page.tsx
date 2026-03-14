@@ -58,9 +58,13 @@ function LoginPageContent() {
   });
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Login to Cloud TMS</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="relative w-full animate-rise overflow-hidden border-white/80 bg-white/72 p-6">
+        <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-emerald-400/35 blur-2xl" />
+        <p className="mb-2 inline-flex rounded-full border border-emerald-900/15 bg-emerald-900/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-800">
+          Cloud TMS
+        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Login to your workspace</h1>
         <p className="mb-5 text-sm text-slate-600">Use your credentials to access operations dashboard.</p>
         {infoMessage ? <p className="mb-3 rounded bg-emerald-50 p-2 text-sm text-emerald-700">{infoMessage}</p> : null}
         <form
@@ -96,11 +100,11 @@ function LoginPageContent() {
         <div className="mt-4 flex items-center justify-between text-sm text-slate-600">
           <p>
             No account?{" "}
-            <Link className="font-semibold text-cyan-700" href="/signup">
+            <Link className="font-semibold text-emerald-700" href="/signup">
               Sign up
             </Link>
           </p>
-          <Link className="font-semibold text-cyan-700" href="/forgot-password">
+          <Link className="font-semibold text-emerald-700" href="/forgot-password">
             Forgot password?
           </Link>
         </div>
@@ -111,9 +115,9 @@ function LoginPageContent() {
 
 function LoginPageFallback() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Login to Cloud TMS</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="w-full animate-rise border-white/80 bg-white/72">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Login to your workspace</h1>
         <p className="mb-5 text-sm text-slate-600">Loading login form...</p>
       </Card>
     </main>

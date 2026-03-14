@@ -14,7 +14,7 @@ const config: Config = {
         sans: ["var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        card: "0 10px 30px rgba(15, 23, 34, 0.08)",
+        card: "0 18px 40px rgba(16, 33, 26, 0.12)",
       },
       keyframes: {
         rise: {

@@ -32,9 +32,9 @@ export default function ForgotPasswordPage() {
   });
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Forgot password</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="w-full animate-rise border-white/80 bg-white/72">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Forgot password</h1>
         <p className="mb-5 text-sm text-slate-600">Enter your email to receive a reset link.</p>
         <form
           className="space-y-4"
@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
           </Button>
         </form>
         <p className="mt-4 text-sm text-slate-600">
-          <Link className="font-semibold text-cyan-700" href="/login">
+          <Link className="font-semibold text-emerald-700" href="/login">
             Back to login
           </Link>
         </p>

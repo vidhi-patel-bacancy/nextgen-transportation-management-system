@@ -60,9 +60,9 @@ function VerifyEmailPageContent() {
   const emailValue = watch("email");
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Verify your email</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="w-full animate-rise border-white/80 bg-white/72">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Verify your email</h1>
         <p className="mb-5 text-sm text-slate-600">Enter the 6-digit OTP sent to your inbox.</p>
         <form
           className="space-y-4"
@@ -99,7 +99,7 @@ function VerifyEmailPageContent() {
         <div className="mt-4 flex items-center justify-between text-sm">
           <button
             type="button"
-            className="font-semibold text-cyan-700"
+            className="font-semibold text-emerald-700"
             disabled={resending}
             onClick={async () => {
               try {
@@ -117,7 +117,7 @@ function VerifyEmailPageContent() {
           >
             {resending ? "Resending..." : "Resend OTP"}
           </button>
-          <Link className="font-semibold text-cyan-700" href="/login">
+          <Link className="font-semibold text-emerald-700" href="/login">
             Back to login
           </Link>
         </div>
@@ -128,9 +128,9 @@ function VerifyEmailPageContent() {
 
 function VerifyEmailPageFallback() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Verify your email</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="w-full animate-rise border-white/80 bg-white/72">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Verify your email</h1>
         <p className="mb-5 text-sm text-slate-600">Loading verification details...</p>
       </Card>
     </main>

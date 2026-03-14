@@ -52,9 +52,9 @@ function ResetPasswordPageContent() {
   });
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Reset password</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="w-full animate-rise border-white/80 bg-white/72">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Reset password</h1>
         <p className="mb-5 text-sm text-slate-600">Set a new password for your account.</p>
         {!hasValidLink ? <p className="mb-4 text-sm text-rose-700">This reset link is invalid. Request a new one.</p> : null}
         <form
@@ -97,7 +97,7 @@ function ResetPasswordPageContent() {
           </Button>
         </form>
         <p className="mt-4 text-sm text-slate-600">
-          <Link className="font-semibold text-cyan-700" href="/forgot-password">
+          <Link className="font-semibold text-emerald-700" href="/forgot-password">
             Request new reset link
           </Link>
         </p>
@@ -108,9 +108,9 @@ function ResetPasswordPageContent() {
 
 function ResetPasswordPageFallback() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Reset password</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="w-full animate-rise border-white/80 bg-white/72">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Reset password</h1>
         <p className="mb-5 text-sm text-slate-600">Loading reset details...</p>
       </Card>
     </main>

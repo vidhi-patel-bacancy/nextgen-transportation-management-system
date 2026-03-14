@@ -31,14 +31,14 @@ export default function DashboardPage() {
       </section>
 
       <section className="mt-6 grid gap-6 lg:grid-cols-[2fr,1fr]">
-        <Card>
-          <h3 className="mb-3 text-base font-semibold text-slate-900">Latest Shipments</h3>
+        <Card className="border-white/75 bg-white/70">
+          <h3 className="mb-3 text-base font-semibold tracking-tight text-slate-900">Latest Shipments</h3>
           <div className="space-y-3">
             {(recentShipments ?? []).slice(0, 8).map((shipment) => (
               <Link
                 key={shipment.id}
                 href={`/shipments/${shipment.id}`}
-                className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2 hover:bg-slate-50"
+                className="flex items-center justify-between rounded-xl border border-emerald-950/10 bg-white/75 px-3 py-2 transition hover:-translate-y-0.5 hover:border-emerald-600/30 hover:bg-white"
               >
                 <div>
                   <p className="font-medium text-slate-900">{shipment.tracking_number}</p>
@@ -51,19 +51,31 @@ export default function DashboardPage() {
           </div>
         </Card>
 
-        <Card>
-          <h3 className="mb-3 text-base font-semibold text-slate-900">Quick Actions</h3>
+        <Card className="border-white/75 bg-white/70">
+          <h3 className="mb-3 text-base font-semibold tracking-tight text-slate-900">Quick Actions</h3>
           <div className="space-y-2 text-sm">
-            <Link href="/orders/new" className="block rounded-lg bg-slate-100 px-3 py-2 font-semibold text-slate-800">
+            <Link
+              href="/orders/new"
+              className="block rounded-xl border border-emerald-900/15 bg-white/80 px-3 py-2 font-semibold text-slate-800 transition hover:bg-emerald-900/5"
+            >
               Create New Order
             </Link>
-            <Link href="/shipments" className="block rounded-lg bg-slate-100 px-3 py-2 font-semibold text-slate-800">
+            <Link
+              href="/shipments"
+              className="block rounded-xl border border-emerald-900/15 bg-white/80 px-3 py-2 font-semibold text-slate-800 transition hover:bg-emerald-900/5"
+            >
               Assign Shipment
             </Link>
-            <Link href="/carriers/new" className="block rounded-lg bg-slate-100 px-3 py-2 font-semibold text-slate-800">
+            <Link
+              href="/carriers/new"
+              className="block rounded-xl border border-emerald-900/15 bg-white/80 px-3 py-2 font-semibold text-slate-800 transition hover:bg-emerald-900/5"
+            >
               Add Carrier
             </Link>
-            <Link href="/reports" className="block rounded-lg bg-slate-100 px-3 py-2 font-semibold text-slate-800">
+            <Link
+              href="/reports"
+              className="block rounded-xl border border-emerald-900/15 bg-white/80 px-3 py-2 font-semibold text-slate-800 transition hover:bg-emerald-900/5"
+            >
               View Reports
             </Link>
           </div>

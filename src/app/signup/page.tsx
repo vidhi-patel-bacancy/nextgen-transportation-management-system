@@ -40,9 +40,13 @@ export default function SignupPage() {
   });
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md items-center px-4">
-      <Card className="w-full animate-rise">
-        <h1 className="text-2xl font-bold text-slate-900">Create Account</h1>
+    <main className="mx-auto flex min-h-screen w-full max-w-lg items-center px-4">
+      <Card className="relative w-full animate-rise overflow-hidden border-white/80 bg-white/72 p-6">
+        <div className="pointer-events-none absolute -left-8 -top-8 h-24 w-24 rounded-full bg-teal-400/30 blur-2xl" />
+        <p className="mb-2 inline-flex rounded-full border border-emerald-900/15 bg-emerald-900/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-800">
+          New Workspace
+        </p>
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Create Account</h1>
         <p className="mb-5 text-sm text-slate-600">Set up your company workspace to start tracking shipments.</p>
         <form
           className="space-y-4"
@@ -96,7 +100,7 @@ export default function SignupPage() {
         </form>
         <p className="mt-4 text-sm text-slate-600">
           Already have an account?{" "}
-          <Link className="font-semibold text-cyan-700" href="/login">
+          <Link className="font-semibold text-emerald-700" href="/login">
             Login
           </Link>
         </p>
