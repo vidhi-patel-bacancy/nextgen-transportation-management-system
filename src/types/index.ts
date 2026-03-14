@@ -24,6 +24,13 @@ export interface AppUser {
   email: string;
   role: UserRole;
   organization_id: string;
+  email_verified_at: string | null;
+  signup_otp_hash: string | null;
+  signup_otp_expires_at: string | null;
+  signup_otp_sent_at: string | null;
+  password_reset_token_hash: string | null;
+  password_reset_expires_at: string | null;
+  password_reset_sent_at: string | null;
   created_at: string;
 }
 

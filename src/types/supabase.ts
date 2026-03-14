@@ -39,6 +39,13 @@ export interface Database {
           email: string;
           role: UserRole;
           organization_id: string;
+          email_verified_at: string | null;
+          signup_otp_hash: string | null;
+          signup_otp_expires_at: string | null;
+          signup_otp_sent_at: string | null;
+          password_reset_token_hash: string | null;
+          password_reset_expires_at: string | null;
+          password_reset_sent_at: string | null;
           created_at: string;
         };
         Insert: {
@@ -46,6 +53,13 @@ export interface Database {
           email: string;
           role?: UserRole;
           organization_id: string;
+          email_verified_at?: string | null;
+          signup_otp_hash?: string | null;
+          signup_otp_expires_at?: string | null;
+          signup_otp_sent_at?: string | null;
+          password_reset_token_hash?: string | null;
+          password_reset_expires_at?: string | null;
+          password_reset_sent_at?: string | null;
           created_at?: string;
         };
         Update: {
@@ -53,6 +67,13 @@ export interface Database {
           email?: string;
           role?: UserRole;
           organization_id?: string;
+          email_verified_at?: string | null;
+          signup_otp_hash?: string | null;
+          signup_otp_expires_at?: string | null;
+          signup_otp_sent_at?: string | null;
+          password_reset_token_hash?: string | null;
+          password_reset_expires_at?: string | null;
+          password_reset_sent_at?: string | null;
           created_at?: string;
         };
         Relationships: [
@@ -63,6 +84,33 @@ export interface Database {
             referencedColumns: ["id"];
           },
         ];
+      };
+      password_reset_requests: {
+        Row: {
+          id: string;
+          user_id: string;
+          email: string;
+          token_hash: string;
+          expires_at: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          email: string;
+          token_hash: string;
+          expires_at: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          email?: string;
+          token_hash?: string;
+          expires_at?: string;
+          created_at?: string;
+        };
+        Relationships: [];
       };
       orders: {
         Row: {

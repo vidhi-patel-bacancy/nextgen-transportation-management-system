@@ -12,7 +12,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
-import { signup } from "@/services/authService";
+import { logout, requestSignupOtp, signup } from "@/services/authService";
 
 const schema = z.object({
   email: z.string().email(),
@@ -50,8 +50,14 @@ export default function SignupPage() {
             try {
               setSubmitting(true);
               setError(null);
-              await signup(values);
-              router.replace("/dashboard");
+              const normalizedEmail = values.email.trim().toLowerCase();
+              await signup({
+                ...values,
+                email: normalizedEmail,
+              });
+              await requestSignupOtp(normalizedEmail);
+              await logout();
+              router.replace(`/verify-email?email=${encodeURIComponent(normalizedEmail)}`);
             } catch (err) {
               setError(err instanceof Error ? err.message : "Unable to create account.");
             } finally {

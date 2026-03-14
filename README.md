@@ -10,7 +10,7 @@ Production-ready MVP for a cloud Transportation Management System built with:
 
 ## Features
 
-- Authentication: signup, login, logout, session persistence, middleware route protection
+- Authentication: signup with email OTP verification, login, forgot/reset password, logout, session persistence, middleware route protection
 - Dashboard metrics: total, active, delayed, monthly shipments
 - Orders module: create, update, delete, list, detail
 - Shipments module: create from order, assign carrier, update status
@@ -48,6 +48,13 @@ AWS_REGION=
 AWS_BUCKET_NAME=
 
 SUPABASE_SERVICE_ROLE_KEY=
+
+APP_BASE_URL=http://localhost:3000
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASS=
+MAIL_FROM="Cloud TMS <no-reply@example.com>"
 ```
 
 ## Supabase Setup
@@ -57,6 +64,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 3. In Authentication settings, enable email/password auth.
 4. Copy project URL and anon key into `.env.local`.
 5. For seeding and admin scripts, add service role key to `.env.local`.
+6. Run migration `supabase/migrations/20260314191000_auth_email_otp_reset.sql` for OTP + reset fields.
 
 ## AWS S3 Setup
 

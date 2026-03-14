@@ -52,7 +52,21 @@ export async function middleware(request: NextRequest) {
   }
 
   if (isProtected && user) {
-    const { data: profile } = await supabase.from("users").select("role").eq("id", user.id).single();
+    const { data: profile } = await supabase
+      .from("users")
+      .select("role, email_verified_at")
+      .eq("id", user.id)
+      .single();
+
+    if (!profile?.email_verified_at) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/verify-email";
+      if (user.email) {
+        url.searchParams.set("email", user.email);
+      }
+      return NextResponse.redirect(url);
+    }
+
     if (!profile?.role || !canAccessAppPath(pathname, profile.role)) {
       const url = request.nextUrl.clone();
       url.pathname = "/dashboard";
